@@ -1,5 +1,8 @@
 {
-  "_comment": ["", ""],
+  "_comment": [
+    "ex. importで使うときは@framework/*, ../packages/commercejs/src/*へマッピングされる,",
+    ""
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "target": "esnext",
@@ -16,7 +19,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "//": "ex. importで使うときは@framework/*, ../packages/commercejs/src/*へマッピングされる",
     "paths": {
       "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"],
@@ -25,8 +27,8 @@
       "@components/*": ["components/*"],
       "@commerce": ["../packages/commerce/src"],
       "@commerce/*": ["../packages/commerce/src/*"],
-      "@framework": ["../packages/commercejs/src"],
-      "@framework/*": ["../packages/commercejs/src/*"]
+      "@framework": ["../packages/local/src"],
+      "@framework/*": ["../packages/local/src/*"]
     }
   },
   "//": " filesもincludeも指定しない場合、tsconfig.jsonが置かれているディレクトリ配下の全てのTypeScriptファイル（拡張子が.ts、.d.ts、.tsxであるファイル）のうち、excludeに含まれるファイル以外がコンパイル対象になる。",

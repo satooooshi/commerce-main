@@ -45,6 +45,11 @@ for (const [key, value] of Object.entries(object1)) {
 */
 
 const useData: UseData = (options, input, fetcherFn, swrOptions) => {
+  console.log(
+    'const useData: UseData = (options, input, fetcherFn, swrOptions) => {'
+  )
+  console.log(options, input, fetcherFn, swrOptions)
+
   const hookInput = Array.isArray(input) ? input : Object.entries(input)
   // fetcher 宣言
   const fetcher = async (
@@ -62,7 +67,7 @@ const useData: UseData = (options, input, fetcherFn, swrOptions) => {
           obj[hookInput[i][0]!] = val // hookInput[i][0] is key
           return obj
         }, {}),
-        fetch: fetcherFn, // this is const fetcher: in fetcher.ts
+        fetch: fetcherFn, // defined in fetcher.ts
       })
     } catch (error) {
       // SWR will not log errors, but any error that's not an instance

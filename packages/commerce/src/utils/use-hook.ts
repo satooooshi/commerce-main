@@ -5,6 +5,22 @@ import useData from './use-data'
 
 export function useFetcher() {
   const { providerRef, fetcherRef } = useCommerce()
+
+  // export const localProvider = {fetcher.} in provider.tsをgetCommerceProvider(localProvider)で使う
+  // (providerはsrc/index.tsxでexport const CommerceProvider = getCommerceProvider(localProvider)設定され, Layout.tsxで<CommerceProvider..使われる)
+
+  // function CoreCommerceProvider<P extends Provider>({　内で
+  // const providerRef = useRef(provider)
+  // const fetcherRef = useRef(provider.fetcher)
+  // でuseRefを使ってfetcherRef.current=provider.fetcherと設定される！！
+  // const cfg = useMemo(
+  //  () => ({ providerRef, fetcherRef, locale, cartCookie }),
+  //  [locale, cartCookie]
+  // )
+  // でcfgに値代入してから、
+  // return <Commerce.Provider value={cfg}>{children}</Commerce.Provider>
+  // で　Commerce Contextへ渡す！！
+  // useCommerce():useContext(Commerce)でref中に設定された値(ref.current)を参照！！
   return providerRef.current.fetcher ?? fetcherRef.current // fetcherRef.current == async ({ url , query , method , variables , body })=> {…} in fetcher.ts
 }
 
@@ -21,7 +37,7 @@ export function useHook<
 export function useSWRHook<H extends SWRHook<any>>(
   hook: PickRequired<H, 'fetcher'>
 ) {
-  const fetcher = useFetcher()
+  const fetcher = useFetcher() // in fetcher.ts
 
   return hook.useHook({
     /*
@@ -41,6 +57,8 @@ export function useSWRHook<H extends SWRHook<any>>(
       }
      */
     useData(ctx) {
+      console.log('useData(ctx){ ctx:')
+      console.log(ctx)
       const response = useData(hook, ctx?.input ?? [], fetcher, ctx?.swrOptions)
       return response
     },
