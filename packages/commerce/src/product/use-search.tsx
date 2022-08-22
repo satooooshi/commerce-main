@@ -4,6 +4,8 @@ import type { HookFetcherFn, SWRHook } from '../utils/types'
 import type { SearchProductsHook } from '../types/product'
 import type { Provider } from '..'
 
+// ReturnType<T>は関数の返り値を表す型です。
+// https://qiita.com/ehika/items/8f41d4a3c8f9df4af9c3
 export type UseSearch<
   H extends SWRHook<SearchProductsHook<any>> = SWRHook<SearchProductsHook>
 > = ReturnType<H['useHook']>
@@ -17,6 +19,7 @@ export const fetcher: HookFetcherFn<SearchProductsHook> = SWRFetcher //  fetcher
 // fnは引数provider、戻り値provider.products?.useSearch!である関数
 const fn = (provider: Provider) => provider.products?.useSearch! // export const handler: SWRHook<SearchProductsHook> = {...}
 
+// 定義した型UseDataは型注釈で使える. 関数の型宣言を型注釈に使った場合、関数の実装側の引数と戻り値の型注釈は省略できます。
 const useSearch: UseSearch = (input) => {
   // 名前 (識別子) の型をコンパイラに伝えるのが宣言で、その名前が参照している実体 (メモリ) を確保するのが定義です。
   // useHook Object定義ではなく関数呼び出し！！ cf. new Greeter("Hello, ", "Taro"); (constructor)

@@ -27,8 +27,8 @@
       "@components/*": ["components/*"],
       "@commerce": ["../packages/commerce/src"],
       "@commerce/*": ["../packages/commerce/src/*"],
-      "@framework": ["../packages/local/src"],
-      "@framework/*": ["../packages/local/src/*"]
+      "@framework": ["../packages/commercejs/src"],
+      "@framework/*": ["../packages/commercejs/src/*"]
     }
   },
   "//": " filesもincludeも指定しない場合、tsconfig.jsonが置かれているディレクトリ配下の全てのTypeScriptファイル（拡張子が.ts、.d.ts、.tsxであるファイル）のうち、excludeに含まれるファイル以外がコンパイル対象になる。",

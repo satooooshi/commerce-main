@@ -50,6 +50,9 @@ export type HookFetcherContext<H extends HookSchemaBase> = {
   ) => Promise<T>
 }
 
+// &は上書きではないことに注意。どちらかというと制約の追加。
+// type Foo = {a: string, b: boolean}
+// type Zee = Foo & {a: string | () => any} // {a: string, b: boolean}であって{a: string | () => any, b: boolean}ではない
 export type HookFetcherOptions = { method?: string } & (
   | { query: string; url?: string }
   | { query?: string; url: string }
@@ -61,6 +64,11 @@ export type HookSWRInput = [string, HookInputValue][]
 
 export type HookFetchInput = { [k: string]: HookInputValue }
 
+// keyof-type-operator
+// https://typescriptbook.jp/reference/type-reuse/keyof-type-operator
+// never 型
+// 正常に return されない可能性のある関数で使う
+// エラーでthrowされる, process.exitで途中で処理を途中で中断する, etc...
 export type HookFunction<
   Input extends { [k: string]: unknown } | undefined,
   T

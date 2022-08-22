@@ -44,6 +44,7 @@ for (const [key, value] of Object.entries(object1)) {
 
 */
 
+// 定義した型UseDataは型注釈で使える. 関数の型宣言を型注釈に使った場合、関数の実装側の引数と戻り値の型注釈は省略できます。
 const useData: UseData = (options, input, fetcherFn, swrOptions) => {
   console.log(
     'const useData: UseData = (options, input, fetcherFn, swrOptions) => {'

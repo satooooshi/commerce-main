@@ -2,6 +2,19 @@ import { SWRHook } from '@vercel/commerce/utils/types'
 import useSearch, { UseSearch } from '@vercel/commerce/product/use-search'
 export default useSearch as UseSearch<typeof handler>
 
+/*
+実装DIY
+引数は一つ下の階層まで含める、
+argument, propertyは同じ名前！！ OR { options: aa, input, fetch } options is renamed into aa
+*/
+export const handlera: SWRHook<any> = {
+  useHook:
+    ({ useData }) =>
+    (input) => {},
+  fetchOptions: { method: undefined, query: '', url: undefined },
+  fetcher: async ({ options: aa, input, fetch }) => {}, //any | Promise<any]>
+}
+
 export const handler: SWRHook<any> = {
   fetchOptions: {
     query: '',

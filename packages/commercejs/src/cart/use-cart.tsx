@@ -21,6 +21,9 @@ export const handler: SWRHook<GetCartHook> = {
   },
   useHook: ({ useData }) =>
     function useHook(input) {
+      // input is undefined in useCart from use-add-item here!!
+      console.log('use-cart:handler:useHook:input')
+      console.log(input)
       const response = useData({
         swrOptions: { revalidateOnFocus: false, ...input?.swrOptions },
       })

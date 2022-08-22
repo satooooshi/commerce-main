@@ -35,7 +35,7 @@ export const handler: MutationHook<AddItemHook> = {
 
       return useCallback(
         async function addItem(input) {
-          console.log('input')
+          console.log('use-add-item:handler:useHook:input')
           console.log(input)
           const cart = await fetch({ input })
           await mutate(cart, false)

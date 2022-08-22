@@ -57,7 +57,7 @@ export function useSWRHook<H extends SWRHook<any>>(
       }
      */
     useData(ctx) {
-      console.log('useData(ctx){ ctx:')
+      console.log('hook.useHook({ useData(ctx){:tx:')
       console.log(ctx)
       const response = useData(hook, ctx?.input ?? [], fetcher, ctx?.swrOptions)
       return response
