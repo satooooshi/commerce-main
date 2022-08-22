@@ -18,6 +18,12 @@ export const handler: MutationHook<LoginHook> = {
     method: 'login',
   },
   async fetcher({ input, options: { query, method }, fetch }) {
+    console.log('useLogin async fetcher:')
+    console.log({
+      query,
+      method,
+      variables: [input.email, getLoginCallbackUrl()],
+    })
     await fetch({
       query,
       method,

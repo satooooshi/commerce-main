@@ -9,6 +9,10 @@ function isValidSDKQuery(query?: string): query is keyof typeof commerce {
 
 // Fetches from an API route within /api/endpoints directory
 const customFetcher: Fetcher = async ({ method, url, body }) => {
+  console.log(
+    'const customFetcher: Fetcher = async ({ method, url, body }) => {'
+  )
+  console.log({ method, url, body })
   const response = await fetch(url!, {
     method,
     body: body ? JSON.stringify(body) : undefined,
@@ -23,12 +27,18 @@ const customFetcher: Fetcher = async ({ method, url, body }) => {
 }
 
 const fetcher: Fetcher = async ({ url, query, method, variables, body }) => {
+  var api_url: string | undefined
   // If a URL is passed, it means that the fetch needs to be passed on to a custom API route.
-  console.log('fetcher')
+  if (method === 'login') {
+    console.log('/commercejs/src/fetcher.ts:login')
+    api_url = String(variables[1])
+  } else console.log('/commercejs/src/fetcher.ts')
   console.log({ url, query, method, variables, body }) // undef products, list, und, und
-  const isCustomFetch = !!url // convert into true/false
+  //const isCustomFetch = !!url // convert into true/false
+  const isCustomFetch = !!api_url // convert into true/false
   if (isCustomFetch) {
-    const data = await customFetcher({ url, method, body })
+    //const data = await customFetcher({ url, method, body })
+    const data = await customFetcher({ url: api_url, method, body })
     return data
   }
 

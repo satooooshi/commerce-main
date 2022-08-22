@@ -13,6 +13,8 @@ export const fetcher: HookFetcherFn<LoginHook> = mutationFetcher
 const fn = (provider: Provider) => provider.auth?.useLogin!
 
 const useLogin: UseLogin = (...args) => {
+  console.log('const useLogin: UseLogin = (...args) => {')
+  console.log(args)
   const hook = useHook(fn)
   return useMutationHook({ fetcher, ...hook })(...args)
 }

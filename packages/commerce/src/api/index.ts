@@ -123,7 +123,11 @@ export function getEndpoint<
     options?: T['schema']['endpoint']['options']
   }
 ): NextApiHandler {
+  console.log('export function getEndpoint<: context')
+  console.log(context.config)
   const cfg = commerce.getConfig(context.config)
+  console.log('const cfg = commerce.getConfig(context.config)')
+  console.log(cfg)
 
   return function apiHandler(req, res) {
     return context.handler({

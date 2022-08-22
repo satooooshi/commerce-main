@@ -7,6 +7,8 @@ const loginEndpoint: GetAPISchema<
   any,
   LoginSchema<any>
 >['endpoint']['handler'] = async (ctx) => {
+  console.log('const loginEndpoint: GetAPISchema<')
+  console.log(ctx)
   const { req, res, handlers } = ctx
 
   if (
