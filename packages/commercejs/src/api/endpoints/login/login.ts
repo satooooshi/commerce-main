@@ -35,7 +35,7 @@ const login: LoginEndpoint['handlers']['login'] = async ({
       'Set-Cookie',
       serialize(customerCookie, jwt, {
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 24,
+        maxAge: 60 * 60 * 24, // 2022-08-23T03:56:31.187Z
         path: '/',
       })
     )

@@ -4,6 +4,7 @@ import type { MutationHook, HookFetcherFn } from '../utils/types'
 import type { LoginHook } from '../types/login'
 import type { Provider } from '..'
 
+// type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
 export type UseLogin<
   H extends MutationHook<LoginHook<any>> = MutationHook<LoginHook>
 > = ReturnType<H['useHook']>
